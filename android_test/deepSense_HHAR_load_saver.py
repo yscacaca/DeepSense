@@ -210,7 +210,7 @@ loss_eval = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=logits
 saver = tf.train.Saver()
 
 LOAD_DIR = 'model_saver' # your own pre-trained model dir
-LOAD_FILE = 'model.ckpt-2149' #your own pre-trained model file
+LOAD_FILE = 'model.ckpt-16849' #your own pre-trained model file
 
 ANDROID_SAVE_DIR = 'android_model_saver'
 if not os.path.exists(ANDROID_SAVE_DIR):
