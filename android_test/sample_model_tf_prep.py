@@ -32,22 +32,22 @@ freeze_graph.freeze_graph(input_graph_path, input_saver_def_path,
 
 
 
-# Optimize for inference
+# Optimize for inference # The optimized pb file does not run properly on Android now
 
-input_graph_def = tf.GraphDef()
-with tf.gfile.Open(output_frozen_graph_name, "r") as f:
-    data = f.read()
-    input_graph_def.ParseFromString(data)
+# input_graph_def = tf.GraphDef()
+# with tf.gfile.Open(output_frozen_graph_name, "r") as f:
+#     data = f.read()
+#     input_graph_def.ParseFromString(data)
 
-output_graph_def = optimize_for_inference_lib.optimize_for_inference(
-        input_graph_def,
-        ["I"], # an array of the input node(s)
-        ["O"], # an array of output nodes
-        tf.float32.as_datatype_enum)
+# output_graph_def = optimize_for_inference_lib.optimize_for_inference(
+#         input_graph_def,
+#         ["I"], # an array of the input node(s)
+#         ["O"], # an array of output nodes
+#         tf.float32.as_datatype_enum)
 
-# Save the optimized graph
+# # Save the optimized graph
 
-f = tf.gfile.FastGFile(output_optimized_graph_name, "w")
-f.write(output_graph_def.SerializeToString())
+# f = tf.gfile.FastGFile(output_optimized_graph_name, "w")
+# f.write(output_graph_def.SerializeToString())
 
-# tf.train.write_graph(output_graph_def, './', output_optimized_graph_name)                    
+# # tf.train.write_graph(output_graph_def, './', output_optimized_graph_name)                    
